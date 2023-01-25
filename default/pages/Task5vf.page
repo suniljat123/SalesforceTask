@@ -1,0 +1,68 @@
+<apex:page standardController="Account" extensions="task5Class"  >
+    <apex:slds />
+     <html>
+         <head>
+             <style>
+             	#fileupload{
+                     cursor: pointer;
+                 }
+             </style>
+         </head>
+         <body>
+             <h1 style="font-size: 1.5rem;margin-top: revert;">
+                 Notes and Attachments
+             </h1> <br/>
+         </body>
+     </html>     
+     <apex:form Style=" margin-top: -5%;" >
+     	<apex:SectionHeader >
+         	<apex:pageBlock >
+            	<apex:inputText value="{!inputId}" />
+             <apex:commandButton value="Search" action="{!Search}" style="margin-left: .5%;" styleclass="slds-button slds-button_neutral" />
+             <table  class="slds-table slds-table_bordered slds-table_fixed-layout slds-table_resizable-cols" role="grid" aria-label="Example advanced table of Opportunities with cell icon">
+                 <tr>
+                 	<th>Title</th>
+                 	<th>Creaded By</th>
+                     <th>Last Modified</th>
+                     <th>Size</th>
+                     <th>Action</th>
+                 </tr>
+                  <apex:variable value="{!0}" var="index1"/>
+                 <apex:repeat value="{!recList}" var="record1" >
+                      <tr>                        
+                        <td><a><apex:outputLink value="/{!record1.ContentDocumentId}" > <apex:outputField value="{!record1.ContentDocument.title}" /></apex:outputLink></a></td>
+                        <td><a><apex:inputField value="{!record1.ContentDocument.CreatedBy.Name}" /></a></td>
+                         <td><apex:inputField value="{!record1.ContentDocument.LastModifiedDate}" /></td>
+                         <td><apex:inputField value="{!record1.ContentDocument.ContentSize}" />KB</td>   
+                          <td>
+                               <apex:commandLink action="{!delete1}" styleclass="slds-button" >
+                                    <apex:image url="{!URLFOR($Resource.delete_icon)}" width="30" height="30" alt="Delete Record" />
+                            <apex:param value="{!index1}" name="idx"  assignTo="{!idx1}" />
+                              <apex:variable var="index1" value="{!index1+1}"/>
+                       </apex:commandLink> 
+                          </td>
+                     </tr>
+                 </apex:repeat>
+                <apex:variable value="{!0}" var="index2"/>
+                 <apex:repeat value="{!attList}" var="record1" >
+                      <tr>                        
+                        <td><a> <apex:outputField value="{!record1.Name}" /></a></td>
+                        <td><a href="https://cloudcertitude-5e-dev-ed.develop.lightning.force.com/lightning/r/User/0055g00000FHlPfAAL/view" >sunil barara</a></td>
+                         <td><apex:inputField value="{!record1.LastModifiedDate}" /></td>
+                         <td><apex:inputField value="{!record1.BodyLength}" />KB</td>   
+                          <td>                             
+                               <apex:commandLink action="{!delete2}" styleclass="slds-button" >
+                                   <apex:image url="{!URLFOR($Resource.delete_icon)}" width="30" height="30" alt="Delete Record" />
+                          	<apex:param value="{!index2}" name="idxe1" assignTo="{!idx2}" />
+                          	 <apex:variable var="index2" value="{!index2+1}"/>
+                              </apex:commandLink> 
+                          </td>
+                     </tr>
+                 </apex:repeat>
+             </table>      
+               <apex:inputfile value="{!myfile.body}" filename="{!myfile.Name}" id="fileupload" />   
+                <apex:commandButton value="Upload" action="{!upload}" styleclass="slds-button slds-button_brand"  style="font-size:0.8rem;margin-left:-3.5%;}" />
+            </apex:pageBlock>         
+         </apex:SectionHeader>     
+     </apex:form>
+</apex:page>

@@ -1,0 +1,70 @@
+<apex:page controller="customcontroller" >
+   
+    <html>
+        <head>
+            <style>
+            	body{
+                	background-image:url('https://img.freepik.com/free-vector/realistic-studio-lights-empty-background-design_1017-27233.jpg?w=2000');
+                	font-style: italic;
+                }
+                #reset:hover{
+                	color:blue;
+                	font-size:20px;
+                 	background-color: #4CAF50;
+                }
+                #mdiv{
+                	Background:transparent;
+                	margin-left: 550px;
+                	margin-top:250px; 
+                	width:500px
+                }
+                .h{
+                	cursor: pointer;
+                    float:left;
+                }
+                #btn{
+                	margin-left:100px;
+                	margin-top:15px;
+                }
+            </style>
+            
+        </head>
+        <body>
+            <div id="mdiv">
+        <apex:form >
+            <apex:pageMessages ></apex:pageMessages>
+        <h1 style="font-size:25px;">
+            STUDENT REGISTRATION FORM
+        </h1>
+            <br/><br/>
+    	<h1 style="font-size:15px;color:green;margin-left:120px;">
+            Plese fill your Details.....
+        </h1><br/><br/>
+            <div style="Margin-left:20px;">
+                <label class="h">Enter Account Name:</label>
+                <apex:inputText value="{!accname}" /><br/><br/>          
+                <label class="h">Enter First Name:</label>
+                <apex:inputText value="{!fname}" /> <br/><br/>
+                     
+               <label class="h">Enter Last Name:</label>
+                <apex:inputText value="{!lname}" />
+                <br/><br/>
+                <label class="h">Enter AssistantName:</label>
+      				 <apex:inputText value="{!assname}" /> <br/><br/>	
+      			  <label class="h">Enter Opportunity Name:</label>
+       				 <apex:inputText value="{!oppname}" /><br/><br/>
+     		   <label class="h">Enter Amount:</label>
+     			   <apex:inputText value="{!amnt}" /><br/><br/>
+                <div id="btn">
+                    	<apex:commandButton value="save" action="{!saveinfo}" id="reset" />  
+                    <input type="Reset" id="reset"/>
+                 </div>
+            </div>
+    </apex:form>
+    </div>
+            
+        </body>
+    </html>
+    
+    
+</apex:page>

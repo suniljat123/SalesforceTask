@@ -1,0 +1,12 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name='var1' type='String' default='sunil' />
+    <aura:handler name='init' value='{!this}' action='{!c.doinit}'/>
+    <aura:attribute name='con' type= 'Contact' default="{'sobjecttype': 'Contact', 'lastname' : 'Choudhary'}"/>
+    <aura:attribute name='jsObject' type='Object'/>
+	<h1>Hello: {!v.con.lastname}</h1>
+    <hr/>
+    <h1>Value of jsObject: {!v.jsObject.name}-{!v.jsObject.email}</h1>
+    <aura:attribute name='wrapperobj' type='aurotesting.AuroWrapper'/>
+    <hr/>
+    <h1>Value of  wrapper obj:{!v.wrapperobj.string1}-{!v.wrapperobj.intvalue}</h1>
+</aura:component>

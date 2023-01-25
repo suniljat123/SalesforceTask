@@ -1,0 +1,82 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" controller="getAllObjects">
+
+    <aura:attribute name="options" type="List" />
+    <aura:attribute name="fields" type="List" />
+    <aura:attribute name="selectedList" type="String" />
+    <aura:attribute name="values" type="List" default="[]"/>
+    <!--By Khumed-->
+    <aura:attribute name="displayField" type="List" access="global"/>
+    <aura:attribute name="allInitDetails" type="List" access="global"/>
+    <aura:attribute name="showRecord" type="Boolean" access="global" default = "false"/>
+    <aura:attribute name="qeryString" type="String" />
+    <aura:attribute name="objName" type="String" />
+    <aura:attribute name="dataList" type="List"/>
+     <!--By Khumed-->
+    <aura:handler name="init" value="{!this}" action="{!c.initdo}" />
+	<!--Body-->
+     <lightning:card>
+       <lightning:combobox name=" Select Object" 
+                            label="Select Object" 
+                            value="inProgress" 
+                            placeholder="Select Object" 
+                            options="{!v.options}" 
+                            onchange="{!c.handelchangeCB}"/>
+        
+        <lightning:dualListbox name="Fields"
+                               label= "Select Fields"
+                               sourceLabel="Available"
+                               selectedLabel="Selected"
+                               fieldLevelHelp="Select your Fields"
+                               options="{!v.fields}"
+                               value="{!v.values}" 
+                               onchange="{!c.handleChange}"
+                               size="4"/>
+        <br/>
+        <div>
+            <lightning:button variant="brand" 
+                              label="Genrate Query"
+                              title="Brand action" 
+                              onclick="{!c.genrateQuery}" />
+        </div>
+    </lightning:card>
+    <div class = "slds-box">
+        <div class="row slds-box">
+            <lightning:textarea name="input1" value= "{!v.qeryString}" label="Enter SOQL Query" />
+        </div>
+        <lightning:button variant="brand" 
+                          label="Fetch Record"
+                          title="Brand action" 
+                          onclick="{!c.fetchRecord}" />
+    </div> 
+    <!--Tabel For Record-->
+    <center>
+        <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-4 slds-medium-size--3-of-4" >
+            <lightning:card>
+                <aura:if isTrue="{!v.showRecord}">
+                    <b> <h2 class="header">List Of Record to Display</h2></b>
+                    <div class="slds-box">
+                        <br/>
+                        <table class="slds-table slds-table--bordered slds-table--striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><span class="slds-truncate">Id</span></th>
+                                    <th scope="col"><span class="slds-truncate">Record Name</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.dataList}" var="obj">
+                                    <tr>
+                                        <td>{!obj.Id}</td>
+                                        <td>{!obj.Name}</td>
+                                    </tr>
+                                </aura:iteration>
+                                
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </aura:if>
+            </lightning:card>
+        </div>
+    </center>
+</aura:component>

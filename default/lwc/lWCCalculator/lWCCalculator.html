@@ -1,0 +1,65 @@
+<template>
+    <div style="text-align: center;">
+        <lightning-card>
+            <div style="Margin: 0% 25%;border:1px solid Green;height:19rem;">
+                <div>
+                    <h1><b style="font-size: 2rem;color:rgb(65, 132, 191)">Calculator</b></h1>
+                </div>
+                <div>
+                    <!--<lightning-input style=" width: 50%;" value={textvalue} onchange={changedInput} ></lightning-input>-->
+                    <input style=" width: 70%;height:3.5rem;" type="text" value={textvalue} onkeyup={changedInput}  onpaste={handlePaste} >
+                </div>
+                <div>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="+" value="+"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%; width:16%;height:2rem;font-size: 1rem;" type="button" name="-" value="-"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%; width:16%;height:2rem;font-size: 1rem;" type="button" name="*" value="*"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%; width:16%;height:2rem;font-size: 1rem;" type="button" name="/" value="/"
+                        onclick={takeInput}>
+                </div>
+                <div>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="1" value="1"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="2" value="2"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="3" value="3"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="*" value="*"
+                        onclick={takeInput}>
+                </div>
+                <div>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="4" value="4"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="5" value="5"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="6" value="6"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="-" value="-"
+                        onclick={takeInput}>
+                </div>
+                <div>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="7" value="7"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="8" value="8"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="9" value="9"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="+" value="+"
+                        onclick={takeInput}>
+                </div>
+                <div>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="C" value="C"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="0" value="0"
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;" type="button" name="." value="."
+                        onclick={takeInput}>
+                    <input style="margin: 0.5% 0.5%;width:16%;height:2rem;font-size: 1rem;background-color:rgb(60, 170, 170);"
+                        type="button" name="=" value="=" onclick={showResult}>
+                </div>
+            </div>
+        </lightning-card>
+    </div>
+</template>

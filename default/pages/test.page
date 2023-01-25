@@ -1,0 +1,10 @@
+<apex:page >
+    <h1 style="font-size:40px;">
+        Form
+    </h1>
+   <form action="/action_page.php" method="get">
+  	<label for="fname">First name:</label>
+     <input type="text" name="fname" ></input>
+	<label>Last name</label>	
+</form>
+</apex:page>

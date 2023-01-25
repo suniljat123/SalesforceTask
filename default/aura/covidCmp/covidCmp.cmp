@@ -1,0 +1,21 @@
+<aura:component >
+    <aura:attribute name="data" type="List"></aura:attribute>
+    <aura:handler name="init" action="{!c.myAction}" value="{!this}"></aura:handler>
+    <h1>table</h1>
+	<table>
+        <tr>
+        <th>state</th>
+            <th>population</th>
+        </tr>
+        <aura:iteration items="{!v.data}" var="d">
+    	<tr>
+        	<td>
+            {!d.state}
+            </td>
+            <td>
+            {!d.population}
+            </td>
+        </tr>
+            </aura:iteration>
+    </table>
+</aura:component>

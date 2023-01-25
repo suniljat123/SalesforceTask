@@ -1,0 +1,17 @@
+<template>
+    <lightning-card>   
+        <div style="height: 42rem;padding: 20% 40%;">
+        <div style="width: 20.5rem;background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdUb_cy046AnjHBPi2CKClUs455olOLG3dgQ&usqp=CAU);height:10rem;">
+        <h1 style="font-size: 2rem;text-align: center;color: crimson;font-style: italic;">Pay Amount </h1>
+        <div style="width: 14rem;margin: 0% 17%;">
+         <!--   <label for="" style="    padding-left: 5rem;">Amount</label>-->
+         <lightning-input type="number" placeholder="Enter Amount..." onchange={setAmount}>  </lightning-input>
+         </div> 
+         <br/>
+         <div style="text-align: center;">
+        <lightning-button label="Pay" variant="brand" onclick={pay} disabled={disablePay} title="Pay"></lightning-button>
+        </div>
+        </div>
+        </div>
+    </lightning-card>
+</template>

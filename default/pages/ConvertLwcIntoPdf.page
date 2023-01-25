@@ -1,0 +1,15 @@
+<apex:page renderAs="pdf" > 
+    <apex:includeLightning /> 
+    hello
+    <apex:includeScript value="/lightning/lightning.out.js"/>
+    <div id='time'>
+        
+    </div>
+    <script>
+    $Lightning.use("c:Timeapp",function(){
+        $Lightning.createComponent("c:Timecmp",{},"time", function(){
+            console.log("Component created");
+        });
+    });
+    </script>
+</apex:page>

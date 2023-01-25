@@ -1,0 +1,10 @@
+<apex:page standardController="Teacher__c" >
+    <apex:form >
+        Enter account name:
+    	<apex:inputField value="{!Teacher__c.S_Name__c}" />
+        <apex:pageBlock ><apex:pageBlockButtons location="top" >
+            //<apex:commandButton value="save" action="{!save}" />
+        </apex:pageBlockButtons></apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

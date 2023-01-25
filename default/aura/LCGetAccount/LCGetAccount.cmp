@@ -1,0 +1,51 @@
+<aura:component controller='LCGetAccountController' implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global"  >    
+    <aura:handler name='init' action='{!c.doInit}' value='{!this}'/>
+    <aura:attribute name='recordId' type='Id'/>
+    <aura:attribute name="ConList" type="Contact[]"/>
+    <aura:attribute name="Contacts" type="Contact"/>
+    <aura:attribute name="columns" type="List"/> 
+    <lightning:card>
+        <h1 class="slds-text-align_center slds-text-heading_medium" style="color:#C83636; font-family: serif; font-size:2rem;">Contact List</h1>
+        <div class="slds-text-align_right" style="padding-right: 2%;" > 
+            <lightning:button label="New" title="New" onclick="{! c.addRow }"/>
+        </div>
+        <div Style='Padding-left:2%;' >
+            <div style='Margin-top:1%;'>
+                <div class="slds-scrollable" style="height:15rem;width:100%;"> 
+                    <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered" aria-label="Example table of Opportunities with no row hovers">
+                        <tr>
+                            <th><b>Sr.No</b></th>
+                            <th><b>FirstName</b></th>
+                            <th><b>LastName</b></th>
+                            <th><b>Phone</b></th>
+                            <th><b>Email</b></th>
+                            <th><b>Action</b></th>      
+                        </tr> 
+                        <aura:iteration  items="{!v.ConList}" var="Con" indexVar="index">
+                            <tbody>
+                                <tr>
+                                    <td> 
+                                        {!index + 1}
+                                    </td>
+                                    <td><lightning:input name="conFirstName" type="text" maxlength="50" value="{!Con.FirstName}"/> </td>
+                                    <td><lightning:input name="conLastName" type="text" maxlength="50" value="{!Con.LastName}" /> </td>
+                                    <td><lightning:input name="conPhone" type="phone" maxlength="50" value="{!Con.Phone}"/></td>
+                                    <td><lightning:input name="conPhone" type="text" maxlength="50" value="{!Con.Email}"/></td>                                    
+                                    <td >
+                                        <a  onclick="{!c.removeRecord}" data-record="{!index}">
+                                            <lightning:icon size="small"  iconName="action:delete" alternativeText="Delete" title="Delete" />
+                                        </a>
+                                    </td>     
+                                </tr>
+                            </tbody>
+                        </aura:iteration>       
+                    </table>  
+                </div>   
+            </div>     
+        </div> 
+        <div class="slds-align_absolute-center slds-p-top_small">
+            <lightning:button variant="brand" label="Submit" title="Submit" onclick="{!c.saveContacts}" />
+        </div>
+    </lightning:card>
+    
+</aura:component>

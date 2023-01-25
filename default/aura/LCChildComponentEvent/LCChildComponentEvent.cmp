@@ -1,0 +1,16 @@
+<aura:component >
+    <aura:registerEvent name="cmpEvent" type="c:LCEvent"/>
+    <aura:attribute name="FirstName" type="String"/>
+    <div style="text-align:center;border:1px blue solid;">
+        <h1 style="font-size: 2rem;color:#EE6F06">Child Component</h1>
+        <p style="padding-top:2%;">
+            <span  style=" font-weight: bold;padding-right:1%;">Enter Name:</span>
+            <ui:inputText  value="{!v.FirstName}" placeholder="Enter Your Name"/>
+        </p> 
+        <p style="padding-top:2%;">
+        <ui:button label="Submit" press="{!c.Submit}"/>
+        </p>
+        
+    </div>
+    
+</aura:component>

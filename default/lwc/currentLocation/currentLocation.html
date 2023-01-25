@@ -1,0 +1,51 @@
+<template>
+    <lightning-card>
+        <div style="Padding:0 1rem;"> 
+            <div   style="padding-left:15rem;border: 1px solid rgb(191, 82, 82);padding-bottom:1rem;">
+            <h1 style="margin-left: 4rem; font-size: x-large; color: darkgreen;">Find Location</h1>
+            <br/>
+                <label for="country">Country:</label>
+                <select style="margin-left: 1.2rem;" name="country" id="country" onchange={selectedCountry}>
+                    <option value="NULL">SELECT Country</option>
+                    <template for:each={countryData} for:item="d">
+                        <option data-item={d.state} key={d.state} value={d.countryCode}>{d.country}</option>
+                    </template>
+                </select>     
+                <br/><br/>
+                <label for="state">State:</label>
+                <select name="state"  style="margin-left: 2rem;" id="state" onchange={selectedState}>
+                    <option value="NULL">SELECT State</option>
+                    <template for:each={statesData} for:item="d">
+                        <option data-item={d.state} key={d.state} value={d.stateCode}>{d.state}</option>
+                    </template>
+                </select>   
+                 <br/><br/>
+                <label for="district">District:</label>
+                <select name="district"  style="margin-left: 1.2rem;" id="district" onchange={selectedDistrict}>
+                    <option value="NULL">SELECT district</option>
+                    <template for:each={districtData} for:item="d">
+                        <option data-item={d.districtCode} key={d.districtCode} value={d.districtCode}>{d.district}</option>
+                    </template>
+                </select>  
+                 <br/> <br/> 
+                 <label for="Addresss">Addresss:</label>
+                 <input id="Addresss" style="margin-left: 0.8rem;" type="text" onchange={setStreet}
+                placeholder="Enter Your Addresss here..."></input>  
+             </div>
+        </div>
+        <template if:true={isLoading}>
+                 <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template> 
+        <div style="text-align: center;padding:1rem 0;">
+            <lightning-button variant="brand" label="Search" title="Search Location" onclick={searchLocation}
+                class="slds-m-left_x-small"></lightning-button>
+        </div>
+        <template if:true={showLocation}>
+            <div style="Padding:0 1rem;">
+                <lightning-map map-markers={mapMarkers} zoom-level={zoomLevel}>
+            </lightning-map>
+            </div>
+            
+        </template>
+    </lightning-card>
+</template>

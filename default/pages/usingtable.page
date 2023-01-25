@@ -1,0 +1,180 @@
+<apex:page controller="customcontroller" >
+    
+    <html>
+        <head>
+            <style>
+            	body{
+                 background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://imgk.timesnownews.com/story/Exams_100.jpg?tr=w-400,h-300,fo-auto');                
+                background-size:cover;
+                  position: relative;
+                   background-position-x: 75%;
+                 
+                }
+                #mdiv{
+                	Background:transparent;
+                	margin: 15rem auto;
+                //margin-top:250px; 
+                	width:500px
+                }
+                .h{
+                	font-size:15px;
+                	cursor: pointer;
+                    float:left;
+               		 color:#E8CAF1;
+    				font-family: monospace;
+    				font-weight:inherit;
+}
+                }
+                #btn{
+                	margin-left:105px;
+                	margin-top:15px;
+                }
+              	#reset:hover{
+                	color:blue;
+                    font-size:1rem;
+                 	background-color: #4CAF50;
+                	 
+                }
+                #feeheading{
+                    font-size: 30px;
+                    margin-left: 34%;
+                    color:#ffffff;
+                    font-family: fangsong;
+                    font-weight: inherit;
+                }
+                
+            </style>
+                </head>
+        <body>
+            <div id="mdiv">
+        <apex:form >
+            <apex:pageMessages ></apex:pageMessages>
+        <h1 id="feeheading">
+             Fees Deposite FORM
+        </h1>
+            <br/><br/>
+    	<h1 style="font-size:15px;color:aquamarine;margin-left:42%;">
+            Plese fill your Details.....
+        </h1><br/><br/>
+            <div style="Margin-left:20px;">
+            
+               <table style="margin-left: 31%;">
+                   <tr>
+                   		<td>
+                       		
+                            <apex:inputText value="{!search}" id="searchbar" html-placeholder="Enter Id To Find Record"/> <br/><br/>  
+                            <apex:commandButton value="search" action="{!Search_id}" id="search" style="margin-left:103%;margin-top:-21%;" />   
+                      	 
+                     	</td>
+                   </tr>
+                  <tr>
+                   		<td>
+                       <label class="h">Course Name:</label>
+                      </td>
+                      <td>
+                          <apex:outputPanel rendered="{!search != NULL}">
+                     			<apex:repeat value="{!accid}" var="ac" >
+                     			<apex:inputField value="{!ac.name}" />         
+             					</apex:repeat>          
+                          </apex:outputPanel>
+                      		<apex:outputPanel rendered="{!search == NULL}">
+							<apex:inputText value="{!accname}" />
+                          </apex:outputPanel> 
+                      </td>
+                   </tr>
+                   <tr>
+                   		<td>
+                      <label class="h">Enter First Name:</label>
+                      </td>
+                      
+                      <td>
+                      	<apex:outputPanel rendered="{!search != NULL}">
+                     			<apex:repeat value="{!conrecord}" var="ac" >
+                     			<apex:inputField value="{!ac.FirstName}" />         
+             					</apex:repeat>          
+                          </apex:outputPanel>
+                      		<apex:outputPanel rendered="{!search == NULL}">
+							<apex:inputText value="{!fname}" />
+                          </apex:outputPanel> 
+                          
+                      </td>
+                   </tr>
+                    <tr>
+                   		<td>
+                   			 <label class="h">Enter Last Name:</label>
+                      </td>
+                      
+                      <td> 
+                          <apex:outputPanel rendered="{!search != NULL}">
+                     			<apex:repeat value="{!conrecord}" var="ac" >
+                     			<apex:inputField value="{!ac.lastname}" />         
+             					</apex:repeat>          
+                          </apex:outputPanel>
+                      		<apex:outputPanel rendered="{!search == NULL}">
+							<apex:inputText value="{!lname}" />
+                          </apex:outputPanel> 
+                      </td>
+                   </tr>
+                   <tr>
+                   		<td>
+                   			    <label class="h">Enter Father's Name:</label>
+                      </td>
+                      
+                      <td> 
+                          <apex:outputPanel rendered="{!search != NULL}">
+                     			<apex:repeat value="{!conrecord}" var="ac" >
+                     			<apex:inputField value="{!ac.AssistantName}" />         
+             					</apex:repeat>          
+                          </apex:outputPanel>
+                      		<apex:outputPanel rendered="{!search == NULL}">
+							<apex:inputText value="{!assname}" />
+                          </apex:outputPanel> 	
+                      </td>
+                   </tr>
+                   <tr>
+                   		<td>
+                   			      <label class="h">Enter Class:</label>
+                      </td>
+                      
+                      <td> 
+                           <apex:outputPanel rendered="{!search != NULL}">
+                     			<apex:repeat value="{!opprecord}" var="ac" >
+                     			<apex:inputField value="{!ac.Name}" />         
+             					</apex:repeat>          
+                          </apex:outputPanel>
+                      		<apex:outputPanel rendered="{!search == NULL}">
+							<apex:inputText value="{!oppname}" />
+                          </apex:outputPanel> 
+                      </td>
+                   </tr>
+                   <tr>
+                   		<td>
+                   			     <label class="h">Enter Deposited Fees:</label>
+                      </td>
+                      
+                      <td> 
+                          <apex:outputPanel rendered="{!search != NULL}">
+                     			<apex:repeat value="{!opprecord}" var="ac" >
+                     			<apex:inputField value="{!ac.Amount}" />         
+             					</apex:repeat>          
+                          </apex:outputPanel>
+                      		<apex:outputPanel rendered="{!search == NULL}">
+							<apex:inputText value="{!amnt}" />
+                          </apex:outputPanel> 
+                      </td>
+                   </tr>
+                </table>
+                 
+                <div id="btn">
+                    
+                    	<apex:commandButton styleclass="slds-button slds-button_neutral" value="Save" action="{!saveinfo}" id="reset" style="margin-left: 45%;" />  
+                   <!-- <apex:commandButton value="Update" action="{!update_me}" id="update" style="margin-left:2%"/>-->
+                    <input type="Reset" id="reset" style="margin-left:0.5%"/>
+                    <apex:commandButton value="Delete" Action="{!delete_record}" style="margin-left:2% ; background-color: transparent;"/>
+                 </div>
+            </div>
+    </apex:form>
+    </div>
+        </body>
+    </html>
+   </apex:page>

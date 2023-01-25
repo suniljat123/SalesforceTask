@@ -1,0 +1,95 @@
+<apex:page standardController="Account" >
+    <html>
+        <head>
+            <style>
+            	body{
+                background-image:url('https://img.freepik.com/free-vector/realistic-studio-lights-empty-background-design_1017-27233.jpg?w=2000');
+                	
+                }
+                .a{
+                margin-left:4%;
+                font-size:13px;
+                }
+                #mdiv{
+                	Background:transparent;
+                margin-left:37%;
+                //text-align:center;
+                	margin-top:250px; 
+                	width:500px
+                justify-content: center;
+                }
+                .h{
+                	cursor: pointer;
+                	float: left;
+                }
+                .g_picklist{
+                	margin-left:5%;
+                }
+                #btn{
+                	margin-left:100px;
+                	margin-top:15px;
+                	
+                }
+               
+            </style>
+            <script>
+            	
+            	function color(){
+                	color:red;
+                }
+            	function save(){
+            			var lname=getElementById("lname");
+                       console.log('lnm'+lnmae);
+            				if(lname.value)
+                 				 alert('fgf')
+                                 
+                }
+                    </script>
+        </head>
+        <body>
+            <div id="mdiv" >
+        <apex:form >
+            <apex:pageMessages ></apex:pageMessages>
+        <h1 style="font-size:25px;">
+            STUDENT REGISTRATION FORM
+        </h1>
+            <br/><br/>
+    	<h1 style="font-size:15px;color:green;margin-left:120px;">
+            Plese fill your Details.....
+        </h1><br/><br/>
+            <div style="Margin-left:20px;">
+                
+                <label class="h a">Enter First Name: </label>
+                <apex:inputField value="{!account.Name}"/><br/><br/>          
+                <label class="h a">EnterLast Name: </label>
+                <apex:inputField value="{!account.Lastname__c}" /><br/><br/>
+                     
+               <label class="h a">Gender: </label>
+                
+                    <apex:inputField styleclass="g_picklist" value="{!account.Gender__c}" />
+                
+                
+                <br/><br/>
+                <label class="h a">Enter UserName: </label>
+      				 <apex:inputField value="{!account.Username__c}" /><br/><br/>	
+      			  <label class="h a">Enter Password: </label>
+       				 <apex:inputField value="{!account.Password__c}" /><br/><br/>
+     		   <label class="h a">Are you Adult?: </label>
+     			   <apex:inputField value="{!account.Adult__c}" /><br/><br/>
+      		 <label class="h a"> Write About Yourself: </label>
+       			 <apex:inputField value="{!account.About_Student__c}" /><br/>
+                <div id="btn" class="a">
+                    <apex:commandButton value="save" action="{!save}" />
+                    <input type="reset" />
+                          
+            </div>
+            </div>
+            
+    </apex:form>
+    </div>
+            
+        </body>
+    </html>
+    
+    
+</apex:page>

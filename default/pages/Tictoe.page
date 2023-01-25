@@ -1,0 +1,83 @@
+<apex:page standardStylesheets="true" >
+	<html>
+        <head>
+            <title>Tictoe Game</title>
+            <style>
+                body{
+                	background-image:url("https://static.vecteezy.com/system/resources/previews/002/884/043/original/abstract-red-and-black-futuristic-gaming-background-in-livestream-free-vector.jpg");
+               		 background-repeat: no-repeat;
+                 }
+            	#tmain{
+                	  
+                	width:500;
+                	height:500px;
+               		margin-left: 32%;
+                	margin-top: 10%;
+                    padding-left:3%;
+                }
+                .btn1{
+                		background:transparent;
+                		width:150px;
+                		border:none;
+               			cursor:pointer;
+  						height:150px;
+                }
+                .tdright{
+                	border-Right:1px solid gray;
+                	
+                }
+                .tdbottom{
+                	border-bottom:1px solid gray;
+              	}
+            </style>
+            <script>
+            	var x=0,z=0;
+            	function alrt(){
+                	alert(++x);
+                }
+            </script>
+        </head>
+        <body>
+             
+            
+           <table id="tmain">
+               <tr>
+               		<td Class="tdright tdbottom" >
+                         <button class="btn1" onclick="alrt()">
+                             
+                        </button>
+                   </td>
+                   <td Class="tdright tdbottom">  <button onclick="alrt()" class="btn1">
+                             
+                        </button></td>
+                   <td class="tdbottom">  <button onclick="alrt()" class="btn1">
+                             
+                        </button></td>
+               </tr>
+               <tr>
+               		<td Class="tdright tdbottom">  <button onclick="alrt()" class="btn1">
+                             
+                        </button></td>
+                   <td Class="tdright tdbottom">  <button class="btn1" onclick="alrt()">
+                             
+                        </button></td>
+                   <td class="tdbottom" >  <button class="btn1" onclick="alrt()">
+                             
+                        </button></td>
+               </tr>
+               <tr>
+               		<td Class="tdright"> <button class="btn1" onclick="alrt()">
+                             
+                        </button></td>
+                   <td Class="tdright">  <button class="btn1" onclick="alrt()">
+                             
+                        </button></td>
+                   <td> <button class="btn1" onclick="alrt()">
+                             
+                        </button></td>
+               </tr>
+            </table>
+        </body>
+    </html>   
+    
+</apex:page>

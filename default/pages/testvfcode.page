@@ -1,0 +1,6 @@
+<apex:page renderAs="pdf" >
+
+<h1>
+    Hello
+     </h1>
+</apex:page>

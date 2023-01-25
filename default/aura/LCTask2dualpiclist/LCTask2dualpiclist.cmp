@@ -1,0 +1,91 @@
+<aura:component controller="LCTask2GetAllObjects" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+    <aura:attribute name="allObj" type="List"/> 
+    <aura:attribute name="objFeild" type="List"/>
+    <aura:attribute name="values" type="List" default="[]"/>
+    <aura:attribute name="selectedobj" type="String"/>
+    <aura:attribute name="typeQuery" type="String"  /> 
+    <aura:attribute name="data" type="List"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="selectedFeilds" type="List"/>  
+    <aura:attribute name="feildCondition" type="String"/>
+    <aura:attribute name="operatorCondition" type="String"/>
+    <aura:attribute name="writeValue" type="String"/>
+    <aura:attribute name='hideQueryButton' type='Boolean' default='false'/>
+    <aura:attribute name='hideDataTable' type='Boolean' default='false'/>
+    <aura:attribute name='hideSearchButton' type='Boolean' default='false'/>  
+    <aura:attribute name="options" type="List" default="[
+                                                        {'label': '=', 'value': '='},
+                                                        {'label': '≠', 'value': '!='}, 
+                                                        ]"/>
+    <aura:attribute name="writeCondition" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit }"/>
+    <lightning:card footer="Records">
+        <div style="Padding:2% 5%;">
+            <lightning:select name="select1" label="Select Any Object" onchange="{!c.getfeilds}" >
+                <option value="">choose one...</option>
+                <aura:iteration items="{!v.allObj}" var="item">
+                    <option value="{!item.SobjectType}">{!item.SobjectType}</option>
+                </aura:iteration>        
+            </lightning:select>
+            <lightning:dualListbox name="Fields"
+                                   label= "Fields"
+                                   sourceLabel="Available"
+                                   selectedLabel="Selected"
+                                   fieldLevelHelp="Select your Fields"
+                                   options="{!v.objFeild}"
+                                   value="{!v.values}"
+                                   />
+            <aura:if isTrue="{!v.hideQueryButton}">
+                <div style="Padding:1% 1%;   ">
+                    <lightning:button variant="brand" label="Get Query" title="Get Your Query" onclick="{!c.makeQuery }" />
+                </div>
+            </aura:if>
+            <div >
+                <aura:if isTrue="{!v.hideSearchButton}">
+                    <table>
+                        <lightning:card title='Apply Filter On Query'>
+                        <tr>
+                            <td style="Padding:2% 1%;Width:300px;">
+                                <lightning:combobox name="feild" label="Select Feild" value="Feild" placeholder="Select Feild" options="{! v.objFeild }" onchange="{! c.addFeild }"/>
+                                
+                            </td> 
+                                <td style="Padding:2% 1%;Width:300px;">
+                                    <lightning:combobox name="operator" label="Select Operator" value="Operator" placeholder="Select Operator" options="{! v.options }" onchange="{! c.addSymbol }"/>
+                                    
+                                </td> 
+                                <td style="Padding:2% 1%;Width:300px;">
+                                    <lightning:input name="Query" type="text" maxlength="500" value="{!v.writeValue}" label="Your Query" placeholder="Enter Condition"  onchange="{! c.enableApplyChangesButton }" />                                   
+                                </td>      
+                        </tr>
+                        </lightning:card>
+                        <aura:if isTrue="{!v.hideSearchButton}">
+                            <tr> 
+                                <td  style="Padding:0% 1%; ">
+                                    <lightning:button variant="brand-outline" disabled='true' label="Apply Changes" title="Apply Changes"  aura:id='setBtn' onclick="{! c.finalCondition }" />                                    
+                                </td>
+                            </tr>
+                        </aura:if>
+                    </table>  
+                </aura:if>
+            </div> 
+            <aura:if isTrue="{!v.hideSearchButton}">
+                <div style="Margin-top:3%;Padding:1% 1%; height:40px;background-color:white;">
+                    <lightning:input name="Query" type="text" maxlength="500" value="{!v.typeQuery}" label="Your Query" placeholder="Enter Your Query" />            
+                </div> 
+                <div style="Padding:5% 1%;">
+                    <lightning:button variant="brand-outline" label="Search Record" title="Search Your Record"   onclick="{! c.showData }" />
+                </div>  
+            </aura:if >
+            <aura:if isTrue="{!v.hideDataTable}">
+                <div style="height: 300px;Padding:1% 1%;">
+                    <lightning:datatable
+                                         keyField="id"
+                                         data="{!v.data }"
+                                         columns="{!v.columns }"
+                                         hideCheckboxColumn="true"/>
+                </div> 
+            </aura:if>
+        </div>
+    </lightning:card>
+</aura:component>

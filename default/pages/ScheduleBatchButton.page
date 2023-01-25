@@ -1,0 +1,13 @@
+<apex:page standardController="Account" extensions="ScheduledBAtchButtonVf" >
+    <apex:form >
+        <label class="h a">Enter First Name: </label>
+                <apex:inputText value="{!name}" html-placeholder="Enter Your Account Name "/><br/><br/> 
+        Enter Your Email:<apex:inputText value="{!Email }" html-placeholder="Enter Your Email "/><br/><br/>
+       
+        Rating of Account:<apex:inputText value="{!rating}"  /><br/><br/>
+        Enter Hour:<apex:inputText value="{!hour}" /><br/><br/>
+        Enter Minute:<apex:inputText value="{!minute}" /><br/><br/>
+        <apex:commandButton value="Save" action="{!save}" />
+    </apex:form>
+    
+</apex:page>

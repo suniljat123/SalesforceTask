@@ -1,0 +1,39 @@
+<apex:page >
+    <div style="Background-color: Lightblue; margin:auto; width:500px">
+        <apex:form >
+        <h1 style="font-size:30px;">
+            STUDENT REGISTRATION FORM
+        </h1>
+            <br/><br/>
+    	<h1 style="font-size:15px;color:green;margin-left:120px; font-weight:bold;">
+            Plese fill your Details.....
+        </h1><br/><br/>
+            <div style="Margin-left:20px;">
+                 <label style="font-weight:bold;">Enter First Name:</label>
+        		<apex:inputText /><br/><br/>
+           		 <label for="lname" style="font-weight:bold;">EnterLast Name:</label>
+                <apex:inputText id="lname"/><br/><br/>
+                
+               <label for="gender" style="font-weight:bold;">Gender:</label>
+                <select name="gender" id="gender" style="margin-left:46px; ">
+                    <option value="male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="other">Other</option>
+                </select><br/>
+                <label style="font-weight:bold;">Enter UserName:</label>
+      				 <apex:inputText /><br/><br/>	
+                <label style="font-weight:bold;"> Enter Password:</label>
+       				 <apex:inputSecret /> <br/><br/>
+                <label style="font-weight:bold;">Are you Adult?:</label>
+     			   <apex:inputCheckbox /><br/><br/>
+                <label style="font-weight:bold;"> Write About Yourself:</label>
+       			 <apex:inputtextarea /><br/>
+            <label style="margin-left: 120px;"><apex:commandButton action="{!save}" value="Save" /></label>
+             <label><apex:commandButton value="Cancel" /></label>
+            
+            </div>
+        
+    </apex:form>
+    </div>
+    
+</apex:page>

@@ -1,0 +1,72 @@
+<template>
+    <lightning-card>
+        <div style="padding: 0% 3%;;">
+            <template if:true={stateList}>
+             <!--<lightning-button variant="brand" label="Download Data" title="Export Contact Data" onclick={exportContactData}></lightning-button>-->
+                <h1 style="text-align: center;font-size: 2rem;color: lightslategrey;">States Of India</h1>
+                <p style="text-align: right;">Note: Covid Data</p>
+                <table style=" border: 1px solid rgb(180, 61, 61);"
+                    class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped"
+                    aria-label="Example table of Opportunities with striped rows">
+                    <thead>
+                        <tr>
+                            <th  style="background-color:rgb(210, 109, 14);"></th>
+                            <th  style="background-color:rgb(210, 109, 14);">State Code</th>
+                            <th  style="background-color:rgb(210, 109, 14);">Population</th>
+                            <th  style="background-color:rgb(210, 109, 14);">Tested</th>
+                            <th  style="background-color:rgb(210, 109, 14);">Confirmed</th>
+                            <th  style="background-color:rgb(210, 109, 14);">Recovered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={statesData} for:item="d">
+                            <tr key={d.state} onclick={showDistricts} data-item={d.state}>
+                                <td>{d.index}</td>
+                                <td>{d.state}</td>
+                                <td>{d.population}</td>
+                                <td>{d.tested}</td>
+                                <td>{d.confirmed}</td>
+                                <td>{d.recovered}</td>
+                            </tr>
+                        </template> 
+                    </tbody>
+                </table>
+            </template>
+
+            <template if:true={districtList}>
+               <a onclick={showState}> <img  style="float: left; margin-top: 2%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgL32bvtLR7rjv1_FrAKM13YdDd4rl72ZsVQ&usqp=CAU"  alt="Go Back" width="40" height="40"></a>
+                <h1 style="text-align: center;font-size: 2rem;color: lightslategrey;">Districts Of {state}</h1>
+                 <p style="text-align: right;">Note: Covid Data</p>
+                <table style=" border: 1px solid rgb(180, 61, 61);"
+                    class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped"
+                    aria-label="Example table of Opportunities with striped rows">
+                    <thead>
+                        <tr>
+                            <th style="background-color:rgb(14, 194, 210);"></th>
+                            <th style="background-color:rgb(14, 194, 210);">Districts</th>
+                            <th style="background-color:rgb(14, 194, 210);">Population</th>
+                            <th style="background-color:rgb(14, 194, 210);">Tested</th>
+                            <th style="background-color:rgb(14, 194, 210);">Confirmed</th>
+                            <th style="background-color:rgb(14, 194, 210);">Recovered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={districtsData} for:item="d" for:index="index">
+                            <tr key={d.district}>
+                                <td>{d.index}</td>
+                                <td>{d.district}</td>
+                                <td>{d.population}</td>
+                                <td>{d.tested}</td>
+                                <td>{d.confirmed}</td>
+                                <td>{d.recovered}</td>
+                            </tr>
+                        </template> 
+                    </tbody>
+                </table>
+            </template>
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,6 @@
+<aura:component >
+    <aura:attribute name='var1' type='String'/>
+    <aura:handler name='init' action='{!c.doInIt}' value='{!this}'/>
+    <h1>Hello : {!v.var1}</h1>
+    <lightning:button label='Click me' onclick='{!c.onClickHandler}'/>
+</aura:component>

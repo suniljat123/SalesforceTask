@@ -1,0 +1,15 @@
+<aura:component controller="LCCreateContact">
+	<aura:attribute name="ParentFirstName" type="String"/>
+    <aura:attribute name="label" type="String"/>
+    <aura:attribute name="eventCount" type="Integer" default='0'/>
+    <aura:handler name="cmpEvent" event="c:LCEvent" action="{!c.handleComponentEvent}"/>
+    <div style="text-align:center;border:1px blue solid;">
+        <h1 style="font-size: 2rem;color:#EE6F06">Parent Component</h1>
+    <p>
+        <span  style=" font-weight: bold;padding-right:1%;">Name:</span>{!v.ParentFirstName}</p>
+    <p><span  style=" font-weight: bold;padding-right:1%;">Label:</span>{!v.label}</p>
+    <p><span  style=" font-weight: bold;padding-right:1%;">Event Count:</span>{!v.eventCount}</p>
+    <hr/>
+    </div>
+    <c:LCChildComponentEvent/>
+</aura:component>

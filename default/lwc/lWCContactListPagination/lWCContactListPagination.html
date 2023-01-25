@@ -1,0 +1,86 @@
+<template>
+    <lightning-card>
+        <h1 class="slds-text-align_center slds-text-heading_medium" style="color:#C83636; font-family: serif; font-size:2rem; Margin-bottom:1rem;">Contact List</h1>
+        <template if:true={componentNotEmpty}>
+            <div class="slds-scrollable" style="height:7rem;">
+                <table class="slds-table slds-table_cell-buffer slds-table_header-hidden"
+                    aria-label=" Example headless table of Opportunities with no borders ">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={ConList} for:item="contact" for:index="index">
+                            <tr key={contact.Id}>
+                                <td>{contact.FirstName}</td>
+                                <td>{contact.LastName}</td>
+                                <td>{contact.Phone}</td>
+                                <td>{contact.Email}</td>
+                                <td><lightning-button-icon icon-name="utility:delete" variant="bare"
+                                        alternative-text="Delete" class="slds-m-left_xx-small" name={contact.Id}
+                                        value={index} title="Delete" onclick={deleteRow}></lightning-button-icon></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center;Margin:3% 0%;">
+                <lightning-button label="First" title="Go To First Page" onclick={firstPage} disabled={disablePrevious}
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button label="Previous" title="Go To Previous Page" onclick={previousPage}
+                    disabled={disablePrevious} class="slds-m-left_x-small"></lightning-button>
+                <span style="Margin:0% 5%;">Pages {presentPage} of {totalPages}</span>
+                <lightning-button label="Next" title="Go To Next Page" onclick={nextPage} disabled={disableLast}
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button label="Last" title="Go To Last Page" onclick={lastPage} disabled={disableLast}
+                    class="slds-m-left_x-small"></lightning-button>
+
+            </div>
+            <div style="text-align: right; padding: 0% 4%;">Note:Only newly(This Month) Created Contacts show</div>
+        </template>
+
+        <template if:true={componentEmpty}>
+
+            <div class="slds-scrollable" style="height:4rem;">
+                <table class="slds-table slds-table_cell-buffer slds-table_header-hidden"
+                    aria-label=" Example headless table of Opportunities with no borders ">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="background-color:rgb(113, 151, 151);text-align:center;" colspan="5">No Record Found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center;Margin:3% 0%;">
+                <lightning-button label="First" title="Go To First Page" onclick={firstPage} disabled=true
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button label="Previous" title="Go To Previous Page" onclick={previousPage} disabled=true
+                    class="slds-m-left_x-small"></lightning-button>
+                <span style="Margin:0% 5%;">Pages {presentPage} of {totalPages}</span>
+                <lightning-button label="Next" title="Go To Next Page" onclick={nextPage} disabled=true
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button label="Last" title="Go To Last Page" onclick={lastPage} disabled=true
+                    class="slds-m-left_x-small"></lightning-button>
+
+            </div>
+
+        </template>
+        <template if:true={spinnerDelete}>
+                 <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+    </lightning-card>
+</template>

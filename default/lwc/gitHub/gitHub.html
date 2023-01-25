@@ -1,0 +1,55 @@
+<template>
+    <lightning-card>
+        <div>
+            <h1 style="font-size: 2rem;color: seagreen;padding-left: 30%;">GitHub  Info</h1>
+        </div>
+        <div style="padding: 0% 2%;">  
+            <div style="width: 50%;display:inline-block; ">
+                <lightning-input type="text" label="Enter UserName" id="username" placeholder="type username here..." onchange={updateUserName}></lightning-input>
+            </div>
+            
+            <lightning-button variant="brand" disabled={searchBtn} label="Search" title="Search Profile" onclick={search}
+                class="slds-m-left_x-small"></lightning-button>
+            <br /><br />
+            <template if:true={userPopolated}>
+                <img src={imageURL} width="200" height="200" /> 
+                <div>
+                    <b>UserName:</b>{loginName}
+                </div> 
+                <div>
+                    <b>ID:</b>{userId}
+                </div> 
+                <div>
+                    <b>Name:</b>{name}
+                </div> 
+                <div>
+                    <b>Followers:</b>{followers}
+                </div> 
+                <div>
+                    <b>Following:</b>{followings}
+                </div> 
+                <div>
+                    <b>Location:</b>{location}
+                </div> 
+                <div>
+                    <b>Company:</b>{company}
+                </div> 
+                <div>
+                    <b>Public Repository:</b>{public_repository}
+                </div> 
+                <div>
+                    <b>Twitter UserName:</b>{ twitter_username}
+                </div> 
+                <div>
+                    <b>Bio:</b>{bio}
+                </div>
+                <br /> 
+            </template>
+            <template if:true={showError}>
+                <div style="padding: auto auto; ">
+                    <b>Invalid UserName😑😑😑</b>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

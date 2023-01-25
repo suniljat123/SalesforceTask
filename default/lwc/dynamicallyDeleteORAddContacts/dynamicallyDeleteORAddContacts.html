@@ -1,0 +1,63 @@
+<template>
+    <lightning-card>
+        <p>LWC</p>
+        <h1 class="slds-text-align_center slds-text-heading_medium" style="color:#C83636; font-family: serif; font-size:2rem;">Contact List</h1>
+        <div class="slds-text-align_right" style="padding-right: 2%;" > 
+            <lightning-button label="New" title="New" onclick={newRow}></lightning-button>
+        </div>
+        <div style='Padding-left:2%;' >
+            <div style='Margin-top:1%;'>
+                <div class="slds-scrollable" style="height:15rem;width:100%;"> 
+                    <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered" aria-label="Example table of Opportunities with no row hovers">
+                       <thead>
+                        <tr>
+                             <th><b>Sr.No</b></th> 
+                            <th><b>FirstName</b></th>
+                            <th><b>LastName</b></th>
+                            <th><b>Phone</b></th>
+                            <th><b>Email</b></th>
+                            <th><b>Action</b></th>      
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={ConList} for:item="Con"  for:index="index">
+                            <tr  key={Con.Id}> 
+                                <td>{index}</td>
+                                <td><lightning-input name={index} type="text" value={Con.FirstName}  onchange={handleFName} ></lightning-input>  </td>
+                                <td><lightning-input name={index} type="text" value={Con.LastName} onchange={handleLName}></lightning-input> </td>
+                                <td><lightning-input type="text"  name={index} value={Con.Phone} onchange={handlePhone}></lightning-input>  </td>
+                                <td><lightning-input type="text" name={index} value={Con.Email} onchange={handleEmail}></lightning-input>  </td>
+                                <td>
+                                    <a  onclick={openModal}>
+                                        <lightning-icon name={index} icon-name="action:delete" alternative-text="Delete" title="Delete"></lightning-icon>
+                                    </a>
+                                </td>
+                            </tr> 
+                        </template>
+                    </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="slds-align_absolute-center slds-p-top_small"> 
+            <lightning-button variant="brand" label="Submit" title="Submit" onclick={saveContacts} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-card>
+    <template if:true={isModalOpen}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container"> 
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                     <p style="text-align: center; "><b>Are You Sure To Delete This Contact?</b></p>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModal} title="No">No</button>
+                    <button class="slds-button slds-button_brand" onclick={deleteRow} title="Yes">Yes</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

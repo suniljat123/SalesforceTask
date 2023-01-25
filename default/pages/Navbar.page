@@ -1,0 +1,212 @@
+<apex:page >
+    <html>
+        <head>
+            <title>Navbar</title>
+           <style>
+                body{
+                background-image:url("https://wallpaperboat.com/wp-content/uploads/2019/11/light-grey-03.jpg");
+                background-size:cover;
+               font-size:1rem;
+               font-family: system-ui;
+                }
+                nav{
+                
+                 position:fixed;
+  				left: 0px;
+  				top: 0px;
+                background:gray;
+                width:100%;
+                height:6rem;
+                padding-right:1.5rem;
+                box-sizing: border-box;
+                font-family:Georgia, serif;
+                }
+               .tabheadings{
+               font-size:3rem;
+               color:#EE2275;
+               
+               }
+            	  .heading{
+                	color:white;
+                	font-size:5rem;
+                	text-transform:uppercase;
+               		float:left;
+                	padding:1rem;
+               	    
+                }
+               .heading:hover{
+               color:#D5C50C;
+               
+               }
+               .tabheadings:hover{
+               background-color:#C57361;
+               color:white;
+               border-radius:1rem;
+               }
+            	nav ul{
+                display:flex;
+                 list-style:none;
+                float:right;
+               
+                }
+                nav ul li a{ 
+                 line-height:6rem;
+                font-weight:bold;
+                font-size:1rem;
+                color:white;
+                 text-decoration:none;
+                }
+               .actheading{
+               font-size:1.5rem;
+               font-weight:bold;
+               }
+               .galleryimg{
+               filter: grayscale(80%);
+               
+               }  
+               .galleryimg:hover{
+               filter: grayscale(0%);
+               }
+               .galleryimg{
+               border-radius:1.5rem;
+               }
+               
+               #contentdiv{
+                margin-top:110px;
+               }
+            </style>
+        </head>
+        <body>
+             <div style="margin-left:1%;">
+                 
+             <div>  <nav style="z-index:1;">
+                  <apex:image url="{!$Resource.hkh}" width="8%" height="120%" style="float:left; " id="logo"/>
+                    <div class="heading" >
+                        hkh
+                    </div>
+            	<ul>
+                    <li><a>Home</a></li>
+                    <li><a href="#admission">Admission</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#activities">Activities</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contactus">Contact Us</a></li>
+                    
+                </ul>
+                  </nav></div>
+             <div id="contentdiv">
+                 <!--ABOUT--> 
+             <div style="font-size:1rem;">
+                 <h1 id="about" class="tabheadings">
+                     About
+                 </h1>
+                     <p>
+                         Harilela Khubani Harjani Public School (HKH), Ajmer came into being on 7th July 2003 with a strength of 222 students which today has risen to a magic figure of more than 1700 students.
+
+The school aims at enhancing all round development of the children in healthy, cheerful and conductive environment leading them to touch and discover new heights. Its location in the educational belt of Ajmer surrounded by hills and a historic lake, Anasagar in the front.dmissions are granted on the principle of “First Come, First Take” without any discrimination of Caste, Creed and Colour.
+
+During the past eighteen years the school having served the society usefully has fulfilled an acute need of an English medium school and now for the school, we can proudly say it is one of the best schools of Ajmer.
+
+A team of highly qualified and dedicated staff possess a caring attitude for the children and are helpful to them at every stage of curriculum development.
+
+Morning Assembly provides an opportunity to help every child develop in him a self confidence for addressing a large gathering in the form of thought for the day, short stories, poems and current affairs. Meritorious students are given due concession in the payment of fees. Helping the needy students is a special feature of the school.
+
+The school being only eighteen years old and being, still in its infancy with the dedicative spirit of the staff, most modern infrastructure, well equipped Computerized Library, Labs for all branches of Science, Computer Lab and adequate games and Sports facilities, music, art and craft room and achieved a significant place on the map of Rajasthan.
+                 </p>
+            </div>
+            <!--Admission-->
+            <div>
+                <h1 id="admission" class="tabheadings">
+                     Admission
+                 </h1>
+                <form>
+                    <label>Student Name:</label>
+                    <input type="text" placeholder="Enter student name"/><br/><br/>
+                     <label>Father's Name:</label>
+                    <input type="text" placeholder="Enter Father's name"/><br/><br/>
+                    <label>Select Class</label>
+                    <select>
+                        <option>1</option>
+                         <option>2</option>
+                         <option>3</option>
+                         <option>4</option>
+                         <option>5</option>
+                         <option>6</option>
+                         <option>7</option>
+                         <option>8</option>
+                         <option>9</option>
+                         <option>10</option>
+                         <option>11</option> 
+                         <option>12</option>
+                        
+                    </select> <br/><br/>
+                    <input type="button" value="save"/>
+                     <input type="Reset"  />
+                </form>
+            </div>
+            
+            
+            <!--Activities-->
+            <div>
+                <h1 id="activities" class="tabheadings"  >
+                    Activities
+                </h1>
+                <p class="actheading">
+                    Spanish Language Club
+                </p>
+                <p>
+                    An opportunity to students of class I to VIII to learn a new foreign language.
+                </p>
+                 <p class="actheading">
+                    Spoken English Club
+                </p>
+                <p>
+                    English being part of curriculum but still children find it difficult to speak with correct grammar. Our aim is our students from small to big should speak in English, so to try to fulfill this aim, we have added this activity.
+                </p>
+                <p class="actheading">
+                    Yoga Club
+                </p>
+                <p>
+              Under this club students learn the art of yoga which is the most convenient art of the present times. Here students learn to form various yoga postures which helps them in making their body fit and flexible.
+                </p>
+                <p class="actheading">
+                    Karate and Taekwondo Club
+                </p>
+                <p>
+               To face the fierce world, boys and girls are trained in the art of Karate and Taekwondo which enables them to be ready for self-defence in face of danger.
+                </p>
+                <p class="actheading">
+                   Science and Eco Club
+                </p>
+                <p>
+                Various talks, discussions and speeches are held under the science club. The students are taught about the judicious use of various natural resources, they are made aware and informed about various environment issues, new medical researches and modern scientific techniques. Students showcase their creativity, alertness and love towards the environment and science through their project works and models.
+                </p>
+            </div>
+			<div style="z-index:0;">
+                <h1 id="gallery" class="tabheadings">
+                    Gallery
+                </h1>
+                <div >
+                     <img class="galleryimg" src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP6oU4i_ZfrlqH4_6pXe39rT_spfy2C_BuPg&usqp=CAU " alt="School" width="500rem" height="400rem"/>
+                     <img class="galleryimg" src=" https://www.joonsquare.com/usermanage/image/business/h-k-h-public-school-ajmer-3533/h-k-h-public-school-ajmer-hkh4.jpg " alt="School" width="500rem" height="400rem"/>
+                    <img class="galleryimg" src="https://res.cloudinary.com/rhinobase/image/upload/v1/hkh_website/500401feb043d09cc84082166ba5719f.jpg" alt="School" width="500rem" height="400rem"/>
+					<img class="galleryimg" src=" https://content3.jdmagicbox.com/comp/ajmer/dc/9999px145.x145.1228032314r5a2i9.dc/catalogue/hkh-public-school-vaishali-nagar-ajmer-schools-xq1taxe.png" alt="School" width="500rem" height="400rem"/>
+					<img class="galleryimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxEh6T-9zn4OCLlaQ-CbprPCDhlWphPZzVWA&usqp=CAU" alt="School" width="500rem" height="400rem"/>
+                    <img class="galleryimg" src=" https://www.joonsquare.com/usermanage/image/business/h-k-h-public-school-ajmer-3533/h-k-h-public-school-ajmer-hkh4.jpg" alt="School" width="500rem" height="400rem"/>
+                </div>
+            </div>
+            <div>
+                <h1 id="contactus" class="tabheadings">
+                    Contact Us
+                </h1>
+                <P style="font-size:1rem;">
+                    Contact us on <a>Email-www.hkhschool@gmail.com</a><br/>
+                    Mobile Number:<a>7878438668</a>
+                </P>
+            </div>
+            
+            </div>           
+            </div>
+        </body>
+    </html>
+</apex:page>

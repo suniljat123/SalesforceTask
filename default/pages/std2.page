@@ -1,0 +1,66 @@
+<apex:page standardController="Account" >
+    <html>
+        <head>
+            <style>
+            	body{
+                	background-image:url('https://img.freepik.com/free-vector/realistic-studio-lights-empty-background-design_1017-27233.jpg?w=2000');
+                	font-style: italic;
+                }
+                #gender{
+                	margin-left:50px;
+                }
+            </style>
+            <script>
+            	function save(){
+            			var lname=getElementById("lname");
+            				if(lname.value.localCompare("")==0)
+                 				 alert('fgf')
+                                 
+                }
+                    </script>
+        </head>
+        <body>
+            <div style="Background:transparent; margin:auto; margin-top:220px; width:500px">
+        <apex:form >
+        <h1 style="font-size:30px;">
+            STUDENT REGISTRATION FORM
+        </h1>
+            <br/><br/>
+    	<h1 style="font-size:15px;color:green;margin-left:120px;">
+            Plese fill your Details.....
+        </h1><br/><br/>
+            <div style="Margin-left:20px;">
+                Enter First Name:
+        		<apex:inputText /><br/><br/>
+           		 <label for="lname">EnterLast Name:</label>
+                <apex:inputText id="lname"/><br/><br/>
+                
+               <label for="gender">Gender:</label>
+                <select name="gender" id="gender" >
+                    <option value="male">Male</option>
+                    <option valiue="female" >Female</option>
+                    <option value="other">Other</option>
+                </select><br/><br/>
+      		 	Enter UserName:
+      				 <apex:inputText /><br/><br/>	
+      			  Enter Password:
+       				 <apex:inputSecret /> <br/><br/>
+     		   Are you Adult?:
+     			   <apex:inputCheckbox /><br/><br/>
+      		  Write About Yourself:
+       			 <apex:inputtextarea /><br/>
+            <label style="margin-left: 120px;"><button onclick="save()">
+                  Save
+                </button></label>
+             <label><apex:commandButton value="Cancel" /></label>
+            
+            </div>
+        
+    </apex:form>
+    </div>
+            
+        </body>
+    </html>
+    
+    
+</apex:page>

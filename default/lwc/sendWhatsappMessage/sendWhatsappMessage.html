@@ -1,0 +1,20 @@
+<template>
+    <lightning-card>
+        <div style="text-align: center;font-size: 1.50rem;color: darkgreen;">Send Your Location</div>
+        <div style="padding:0% 5%;">
+            <lightning-input type="text" label="Address" placeholder="Enter Your Address"
+                onchange={setAddress}></lightning-input><br />
+            <lightning-input type="text" label="City" disabled={disableCity} placeholder="Enter Your City"
+                onchange={setCity} ></lightning-input><br />
+        </div>
+        <div style="text-align: center;">
+            <lightning-button title="Send Message" label="Send Location" disabled={disableBtn} variant="brand"
+                onclick={send}></lightning-button>
+        </div>
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+             
+        </template>
+
+    </lightning-card>
+</template>

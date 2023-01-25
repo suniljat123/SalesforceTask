@@ -1,0 +1,61 @@
+<apex:page standardController="Contact" extensions="Task2"   >
+    <apex:slds /> 
+    <html >
+        <head>
+            <style>
+                #listHeading{
+                margin-left:40%;
+                font-size: 2.5rem;
+                font-family: auto;
+                }
+                .Addrow{
+                float: right;
+                }
+                
+            </style> 
+        </head>
+        <body>
+            <h1 id="listHeading">
+                List Of Contacts            
+            </h1>
+        </body> 
+        <apex:form style="margin-top: -3%;" >
+            <apex:sectionHeader /> 
+            <apex:pageBlock >
+                <apex:inputText value="{!inputid}" html-placeholder="Enter Account Id To See Contacts " style="width:14%;" />
+                <apex:commandButton value="Show all record" action="{!showRecord}"  styleclass="slds-button slds-button_neutral"/>  
+            </apex:pageBlock>
+            <apex:pageBlock >
+                <apex:commandButton value="➕Add Row" action="{!addTask}" styleClass="Addrow slds-button slds-button_neutral"   />
+                <table  class="slds-table slds-table_cell-buffer slds-table_bordered" aria-label="Example default base table of Opportunities">
+                    <tr> 
+                        <th>Id</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Phone</th>
+                        <th>email</th> 
+                        <th>Action</th>
+                    </tr>
+                    <apex:variable value="{!0}" var="cnt"/>
+                    <apex:repeat value="{!con}" var="record" >
+                        <tr> 
+                            <td><apex:inputfield value="{! record.Id}"/></td>
+                            <td><apex:inputfield value="{! record.Firstname}"/></td> 
+                            <td><apex:inputfield value="{! record.Lastname}"/></td>
+                            <td><apex:inputfield value="{! record.Phone}"/></td> 
+                            <td><apex:inputfield value="{! record.email}"/></td>  
+                            <td>
+                                <apex:commandLink value="Delete" action="{!deleteNow}" >
+                                    <apex:param value="{!cnt}" name="idx"  assignTo="{!index}" />
+                                    <apex:variable var="cnt" value="{!cnt+1}"/>
+                                </apex:commandLink>  
+                            </td>
+                        </tr>
+                    </apex:repeat> 
+                </table>
+            </apex:pageBlock>  
+            <apex:commandButton value="Save" action="{!saveInfo}" styleClass="slds-button slds-button_brand" style="float:right;" />
+            <apex:commandButton value="DeleteAll" action="{!deleteAll}" styleClass="slds-button slds-button_destructive" style="float: right; margin-right: 0.5rem;" />    
+        </apex:form> 
+    </html> 
+</apex:page>

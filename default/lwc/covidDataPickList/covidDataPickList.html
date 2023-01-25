@@ -1,0 +1,89 @@
+<template>
+    <lightning-card>
+        <div style="padding: 0% 3%;;">
+            <template if:true={stateList}>
+                <h1 style="text-align: center;font-size: 2rem;color: lightslategrey;">Covid Data</h1>
+                <label for="state">Choose a State:</label>
+                <select name="state" id="state" onchange={selectedState}>
+                    <option value="NULL">SELECT STATE CODE</option>
+                    <template for:each={statesData} for:item="d">
+                        <option data-item={d.state} key={d.state} value={d.state}>{d.state}</option>
+                    </template>
+                </select>
+            </template>
+
+            <template if:true={showState}>
+                <h1 style="text-align: center;font-size: 2rem;color: lightslategrey;">State Data</h1>
+                <p style="text-align: right;">Note: Covid Data</p>
+                <table style=" border: 1px solid rgb(180, 61, 61);"
+                    class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped"
+                    aria-label="Example table of Opportunities with striped rows">
+                    <thead>
+                        <tr>
+                            <th style="background-color:rgb(210, 109, 14);"></th>
+                            <th style="background-color:rgb(210, 109, 14);">State Code</th>
+                            <th style="background-color:rgb(210, 109, 14);">Population</th>
+                            <th style="background-color:rgb(210, 109, 14);">Tested</th>
+                            <th style="background-color:rgb(210, 109, 14);">Confirmed</th>
+                            <th style="background-color:rgb(210, 109, 14);">Recovered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={statesDataList} for:item="d">
+                            <tr key={d.state} data-item={d.state}>
+                                <td>{d.index}</td>
+                                <td>{d.state}</td>
+                                <td>{d.population}</td>
+                                <td>{d.tested}</td>
+                                <td>{d.confirmed}</td>
+                                <td>{d.recovered}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                <br />
+                <label for="district">Choose a District:</label>
+                <select name="district" id="district" onchange={selectedDistrict}>
+                    <option value="NULL">SELECT District</option>
+                    <template for:each={districtsData} for:item="d">
+                        <option data-item={d.district} key={d.district} value={d.district}>{d.district}</option>
+                    </template>
+                </select>
+            </template>
+
+            <template if:true={districtList}>
+                <h1 style="text-align: center;font-size: 2rem;color: lightslategrey;">District Data</h1>
+                <p style="text-align: right;">Note: Covid Data</p>
+                <table style=" border: 1px solid rgb(180, 61, 61);"
+                    class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped"
+                    aria-label="Example table of Opportunities with striped rows">
+                    <thead>
+                        <tr>
+                            <th style="background-color:rgb(14, 194, 210);"></th>
+                            <th style="background-color:rgb(14, 194, 210);">Districts</th>
+                            <th style="background-color:rgb(14, 194, 210);">Population</th>
+                            <th style="background-color:rgb(14, 194, 210);">Tested</th>
+                            <th style="background-color:rgb(14, 194, 210);">Confirmed</th>
+                            <th style="background-color:rgb(14, 194, 210);">Recovered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={districtsDataList} for:item="d" for:index="index">
+                            <tr key={d.district}>
+                                <td>{d.index}</td>
+                                <td>{d.district}</td>
+                                <td>{d.population}</td>
+                                <td>{d.tested}</td>
+                                <td>{d.confirmed}</td>
+                                <td>{d.recovered}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+        </div>
+    </lightning-card>
+</template>

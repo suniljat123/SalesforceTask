@@ -1,0 +1,106 @@
+<template>
+    <lightning-card>
+        <input type="text" onkeyup={setLocation} placeholder="Enter Location"
+            style="margin-left: 0.7rem;width: 43.4rem;">
+        <br />
+        <template if:true={blank}>
+            <div
+                style="margin: 0% 1.5%;background-image: url('https://c1.wallpaperflare.com/preview/232/993/172/sky-blue-nature-weather.jpg');height: 20rem;">
+            </div>
+        </template>
+
+        <template if:true={todayData}>
+            <div
+                style="margin: 0% 1.5%;background-image: url('https://c1.wallpaperflare.com/preview/232/993/172/sky-blue-nature-weather.jpg');height: 25rem;">
+
+                <table style="width: 15rem;color: antiquewhite;font-size: 0.8rem;margin-left: 1rem;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="navBar" onclick={today}>
+                                    Today
+                                </div>
+                            </td>
+                            <td>
+                                <div class="navBar" onclick={tomorrow}>
+                                    Tomorrow
+                                </div>
+                            </td>
+                            <td>
+                                <div class="navBar" onclick={next15Days}>
+                                    Next 15 Days
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="padding-left: 70%;color: whitesmoke;padding-top: 1%;">
+                    Last Updated:- {date} {time}
+                </div>
+                <h1 style="font-size: 3rem;padding-left: 10%;padding-top: 5%;color: floralwhite;">{city}</h1>
+                <table style="width: 20rem;">
+                    <tbody>
+                        <tr>
+                            <td style="text-align: end;">
+                                <h1 style="font-size: 7rem;padding-left: 10%;padding-top: 5%;color: floralwhite;">{temp}
+                                </h1>
+                            </td>
+                            <td style="text-align: start;padding-top: 2rem;">
+                                <div style="font-size: 2rem;color: floralwhite;">°C</div>
+                                <div style="font-size: 2rem;color: floralwhite;padding-left: 1rem;">{scene}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </template>
+        <template if:true={next15DaysData}>
+            <table style="width: 15rem;color: rgb(47, 36, 21);font-size: 0.8rem;margin-left: 1rem;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="navBar" onclick={today}>
+                                Today
+                            </div>
+                        </td>
+                        <td>
+                            <div class="navBar" onclick={tomorrow}>
+                                Tomorrow
+                            </div>
+                        </td>
+                        <td>
+                            <div class="navBar" onclick={next15Days}>
+                                Next 15 Days
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="padding:2% 2%;">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Temperature</th>
+                            <th>Condition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={weatherData} for:item="item">
+                            <tr key={item.date}>
+                                <td>{item.date}</td>
+                                <td>{item.maxt} / {item.mint}°C</td>
+                                <td>{item.Condition}</td>
+                            </tr>
+                        </template>
+
+                    </tbody>
+                </table>
+            </div>
+        </template>
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+    </lightning-card>
+</template>
